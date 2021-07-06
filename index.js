@@ -3,6 +3,7 @@ const categoriesRoute = require('./routes/categories');
 const customersRoute = require('./routes/customers');
 const coursesRoute = require('./routes/courses');
 const entrollmentsRoute = require('./routes/enrollments');
+const usersRoute = require('./routes/users');
 const app = express();
 const mongoose = require('mongoose');
 
@@ -19,6 +20,7 @@ app.use('/api/categories', categoriesRoute);
 app.use('/api/customers', customersRoute);
 app.use('/api/courses', coursesRoute);
 app.use('/api/enrollments', entrollmentsRoute);
+app.use('/api/users', usersRoute);
 
 const port = process.env.PORT || 5000;
 
