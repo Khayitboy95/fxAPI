@@ -5,7 +5,8 @@ const _ = require('lodash');
 const Joi = require('joi');
 const passwordComplexity = require('joi-password-complexity');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 router.post('/', async (req, res) => {
     const {error} = validate(req.body);
@@ -20,7 +21,7 @@ router.post('/', async (req, res) => {
     if(!isValidPassword){
         return res.status(400).send('Email yoki parol noto\'g\'ri');   
     }
-    const token = user.generateAuthToken();
+    const token = jwt.sign({ _id: user._id, isAdmin: user.isAdmin }, config.get('jwtPrivateKey'));
     res.header('x-auth-token', token).send(true);
 });
 

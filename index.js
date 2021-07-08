@@ -9,6 +9,7 @@ const config = require('config');
 const app = express();
 const mongoose = require('mongoose');
 
+
 if(!config.get('jwtPrivateKey')){
   console.error('Jiddiy xato fxApi_jwtPrivateKey o\'zgaruvchisi aniqlanmadi');
   process.exit(1);
